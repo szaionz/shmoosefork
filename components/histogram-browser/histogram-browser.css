@@ -1,0 +1,69 @@
+.histogram-container.histogram-activated .histogram-overlay-message {
+    display: none;
+}
+
+.histogram-container:not(.histogram-activated) .histogram-content {
+    filter: blur(15px);
+    pointer-events: none;
+}
+
+.histogram-container .histogram-content {
+    transition: filter .5s;
+}
+
+.histogram-container .histogram-content select {
+    font-family: "Courier New", Courier, monospace;
+    font-size: .8rem;
+    text-overflow: ellipsis;
+}
+
+.histogram-overlay-message {
+    position: absolute;
+    z-index: 1;
+    left: 0;
+    right: 0;
+    margin: 20px 25%;
+    text-align: center;
+}
+
+.histogram-overlay-message-button-container {
+    display: inline-block;
+    margin: 0 5px 6px;
+}
+
+.histogram-overlay-message-button-container {
+    display: inline-block;
+    margin: 0 5px 6px;
+}
+
+.histogram-image-container-outer {
+    /* Center child: https://stackoverflow.com/a/37126250 */
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+}
+
+/* https://stackoverflow.com/a/21992458 */
+.histogram-image-container {
+    flex-shrink: 0;
+    width: 108%;
+    max-width: 800px;
+    aspect-ratio: 1.77; /* 800/450 */
+}
+
+.histogram-image {
+    display: block;
+    margin: 0 auto;
+}
+
+.histogram-modal-guide-content p {
+    margin-bottom: .5rem;
+}
+
+.histogram-modal-guide-content li {
+    margin-bottom: 1rem;
+}
+
+.histogram-modal-guide-content h3 {
+    margin-top: 2rem;
+}

@@ -1,0 +1,165 @@
+@media screen and (max-width: 350px) {
+    #top-navbar .navbar-brand {
+        font-size: 1rem;
+    }
+    #top-navbar .navbar-brand img {
+        height: 20px;
+        width: auto;
+    }
+}
+
+#top-navbar .navbar-brand {
+    margin-left: 0;
+    margin-right: 1rem;
+}
+
+#top-navbar .navbar-nav .nav-link {
+    color: rgba(0,0,0,.9);
+}
+
+#top-navbar .navbar-nav .nav-link.disabled {
+    color: rgba(0,0,0,.3);
+}
+
+#top-navbar-supported-content.top-navbar-content-uninitialized {
+    visibility: hidden !important;
+}
+
+/* for unread count badge */
+.unread-count-badge-container {
+    position: relative;
+}
+
+/* https://stackoverflow.com/a/5748155 */
+.unread-count-badge {
+    background-color: #fa3e3e;
+    border-radius: 0.2rem;
+    color: white;
+    padding: 1px 3px;
+    font-size: .75rem;
+    position: absolute;
+    top: -5px;
+    right: -5px;
+}
+
+/* Course metadata diff */
+.course-metadata-diff-container {
+    white-space: pre-wrap;
+}
+
+.course-metadata-diff-container h5 {
+    margin-top: .5rem;
+}
+
+.course-metadata-diff-old {
+    background-color: #ffdce0;
+    text-decoration: line-through;
+}
+
+.course-metadata-diff-new {
+    background-color: #cdffd8;
+}
+
+#shared-schedule-title {
+    font-weight: 300;
+    line-height: 1.2;
+    text-align: center;
+}
+
+#general-info {
+    font-size: .8rem;
+    text-align: center;
+}
+
+#course-button-list {
+    margin-top: 20px;
+}
+
+#course-button-list .list-group-item:last-child {
+    margin-bottom: 10px;
+}
+
+#course-exam-info-wrapper {
+    /* A workaround to an Edge bug: https://developer.microsoft.com/en-us/microsoft-edge/platform/issues/18883305/ */
+    filter: brightness(1);
+}
+
+#course-exam-info {
+    position: sticky;
+    bottom: 20px;
+}
+
+/* Set selectize dropdown cursor to be pointer instead of text selection */
+.selectize-dropdown .option {
+    cursor: default;
+}
+
+.course-description-tooltip-inner {
+    min-width: 30vw;
+}
+
+/* Overrides list-group-item from Bootstrap */
+.list-group-item {
+    font-size: .8rem;
+    cursor: default;
+}
+
+/* Fixes: Scroll and focus issue with multiple modals open */
+/* https://github.com/nakupanda/bootstrap3-dialog/issues/70 */
+.modal {
+    overflow: auto !important;
+}
+
+/* intro.js - [done,prev,next] buttons order change to [prev,next,done]: https://stackoverflow.com/questions/42263288 */
+/* Also, change "done" button color from light gray to dark gray */
+.introjs-donebutton {
+    float: left;
+    color: #333;
+}
+
+/* Make z-index smaller than bootstrap4-dialog popup */
+html.os-html>.os-host>.os-scrollbar {
+    z-index: 999;
+}
+
+/* Remove Firefox invalid form glow, Bootstrap has its own */
+/* Also, Firefox's appears right after value was edited */
+/* https://stackoverflow.com/a/21198397 */
+:-moz-ui-invalid {
+    box-shadow: none;
+}
+
+/* Modeless dialog - see addBootstrapDialogModelessButton function */
+.bootstrap-dialog.cheesefork-modeless-dialog {
+    visibility: hidden;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding-right: 0;
+}
+
+.bootstrap-dialog.cheesefork-modeless-dialog .modal-dialog {
+    visibility: visible;
+    filter: drop-shadow(0 0 0.75rem #000);
+}
+
+.bootstrap-dialog.cheesefork-modeless-dialog .modal-header {
+    cursor: move;
+}
+
+.bootstrap-dialog.cheesefork-modeless-dialog .modal-body {
+    /* https://stackoverflow.com/a/28852473 */
+    max-height: calc(100vh - 225px);
+    overflow: auto;
+}
+
+/* dark-mode-toggle customizations */
+footer dark-mode-toggle {
+    display: inline-block;
+    vertical-align: bottom;
+    line-height: 0;
+}
+footer dark-mode-toggle::part(fieldset) {
+    padding: 0;
+}
