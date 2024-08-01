@@ -299,6 +299,10 @@ CourseManager.prototype.parseExamDateTime = function (strDate) {
         match = /^בתאריך (\d+)\.(\d+)\.(\d+) (?:יום [א-ו] משעה (\d+)(:\d+)? עד השעה (\d+)(:\d+)?)?/.exec(strDate);
     }
 
+    if(!match){
+        match = /(\d{2})\.(\d{2})\.(\d{4})/.exec(strDate);
+    }
+    
     if (!match) {
         return null;
     }
