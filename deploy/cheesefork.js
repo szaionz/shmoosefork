@@ -883,15 +883,15 @@
     }
 
     function firebaseInit() {
-        var config = {
-            apiKey: "AIzaSyCHNOqBKSt3xmW1Hljnes9BPbCL39po2Ek",
-            authDomain: "shmoosefork.firebaseapp.com",
-            projectId: "shmoosefork",
-            storageBucket: "shmoosefork.appspot.com",
-            messagingSenderId: "410757747572",
-            appId: "1:410757747572:web:4603e29a77820563255221"
+        // var config = {
+        //     apiKey: "AIzaSyCHNOqBKSt3xmW1Hljnes9BPbCL39po2Ek",
+        //     authDomain: "shmoosefork.firebaseapp.com",
+        //     projectId: "shmoosefork",
+        //     storageBucket: "shmoosefork.appspot.com",
+        //     messagingSenderId: "410757747572",
+        //     appId: "1:410757747572:web:4603e29a77820563255221"
           
-        };
+        // };
         firebase.initializeApp(config);
 
         firestoreDb = firebase.firestore();
