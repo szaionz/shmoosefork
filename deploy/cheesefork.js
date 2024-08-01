@@ -31,6 +31,7 @@
         // usually does, on mobile it usually doesn't. It can be a very small
         // non-zero number such as 0.0002 as well, only consider significant
         // width.
+        firebaseInit();
         if (getScrollBarWidth() > 0.5) {
             $('body').overlayScrollbars({ }).removeClass('os-host-rtl');
         }
