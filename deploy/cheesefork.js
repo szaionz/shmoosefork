@@ -892,7 +892,7 @@
         //     appId: "1:410757747572:web:4603e29a77820563255221"
           
         // };
-        firebase.initializeApp(config);
+        // firebase.initializeApp(config);
 
         firestoreDb = firebase.firestore();
         firestoreDb.settings({timestampsInSnapshots: true}); // silence a warning
