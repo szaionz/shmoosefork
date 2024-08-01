@@ -832,7 +832,7 @@
             }
 
             var calFilePath = firebase.auth().currentUser.uid + '/' + semesterFriendlyNameForFileName(currentSemester) + '.ics';
-            var calendarUrl = 'https://files.cheesefork.cf/' + calFilePath;
+            var calendarUrl = 'https://shmoosefork.appspot.com/' + calFilePath;
 
             var exportCalendarDialog = BootstrapDialog.show({
                 title: ' ייצוא לקובץ iCalendar',
@@ -884,19 +884,19 @@
 
     function firebaseInit() {
         var config = {
-            apiKey: 'AIzaSyAfKPyTM83mkLgdQTdx9YS9UXywiswwIYI',
-            authDomain: 'cheesefork-de9af.firebaseapp.com',
-            databaseURL: 'https://cheesefork-de9af.firebaseio.com',
-            projectId: 'cheesefork-de9af',
-            storageBucket: 'cheesefork-de9af.appspot.com',
-            messagingSenderId: '916559682433'
+            apiKey: 'AIzaSyCHNOqBKSt3xmW1Hljnes9BPbCL39po2Ek',
+            authDomain: 'shmoosefork.firebaseapp.com',
+            databaseURL: 'https://shmoosefork.firebaseio.com',
+            projectId: 'shmoosefork',
+            storageBucket: 'shmoosefork.appspot.com',
+            messagingSenderId: '410757747572'
         };
         firebase.initializeApp(config);
 
         firestoreDb = firebase.firestore();
         firestoreDb.settings({timestampsInSnapshots: true}); // silence a warning
 
-        firebaseStorage = firebase.app().storage('gs://files.cheesefork.cf');
+        firebaseStorage = firebase.app().storage('gs://shmoosefork.appspot.com');
     }
 
     function firebaseAuthUIInit(onInitialized) {
