@@ -605,13 +605,15 @@ var CourseFeedback = (function () {
                 fetch('legacy-reviews/'+course+'.json')
             ])
                 .then(function (data) {
-                    [firebaseReviews, response]=data;
+                    let doc;
+                    let response;
+                    [doc, response]=data;
                     var posts = [];
                     if (doc.exists) {
                         var data = doc.data();
                         posts+=data.posts;
                     }
-                    if (reponse.ok){
+                    if (response.ok){
                         posts+=response.json().posts;
                     }
                     if (posts){
