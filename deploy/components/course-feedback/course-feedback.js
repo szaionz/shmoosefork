@@ -614,8 +614,12 @@ var CourseFeedback = (function () {
                     if (reponse.ok){
                         posts+=response.json().posts;
                     }
-
-                    renderFeedback(that, course, posts);
+                    if (posts){
+                        renderFeedback(that, course, posts);
+                    }
+                    else{
+                        onError();
+                    }
                 }, function (error) {
                     onError();
                 });
