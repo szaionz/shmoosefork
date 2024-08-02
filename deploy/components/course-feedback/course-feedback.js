@@ -600,12 +600,19 @@ var CourseFeedback = (function () {
         };
 
         if (typeof firebase !== 'undefined') {
-            firebase.firestore().collection('courseFeedback').doc(course).get()
-                .then(function (doc) {
+            Promise.all(
+            [firebase.firestore().collection('courseFeedback').doc(course).get(),
+                fetch('legacy-reviews/'+course+'.json')
+            ])
+                .then(function (data) {
+                    [firebaseReviews, response]=data;
                     var posts = [];
                     if (doc.exists) {
                         var data = doc.data();
-                        posts = data.posts;
+                        posts+=data.posts;
+                    }
+                    if (reponse.ok){
+                        posts+=response.json().posts;
                     }
 
                     renderFeedback(that, course, posts);

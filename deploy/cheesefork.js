@@ -894,7 +894,6 @@
 
         };
         const app = firebase.initializeApp(config);
-        console.log('hi');
 
         firestoreDb = firebase.firestore();
         firestoreDb.settings({timestampsInSnapshots: true}); // silence a warning
