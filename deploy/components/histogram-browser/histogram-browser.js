@@ -326,7 +326,7 @@ var HistogramBrowser = (function () {
             element.find('.histogram-data .histogram-value-' + item).text(text);
         });
 
-        var imageUrl = 'https://michael-maltsev.github.io/technion-histograms/' + course + '/' + semester + '/' + category + '.png';
+        var imageUrl = 'https://szaionz.github.io/technion-histograms/' + course + '/' + semester + '/' + category + '.png';
         element.find('.histogram-image-container').html($('<img class="img-fluid histogram-image">').prop('src', imageUrl));
     }
 
@@ -407,14 +407,14 @@ var HistogramBrowser = (function () {
         element.text('טוען נתונים...');
 
         var onError = function () {
-            var fallbackUrl = 'https://michael-maltsev.github.io/technion-histograms/' + course + '/';
+            var fallbackUrl = 'https://szaionz.github.io/technion-histograms/' + course + '/';
             element.html('טעינת הנתונים נכשלה. נסו לגשת למאגר בצורה ידנית ');
             var urlElement = $('<a target="_blank" rel="noopener">כאן</a>').prop('href', fallbackUrl);
             element.append(urlElement);
             element.append('.');
         };
 
-        var url = 'https://michael-maltsev.github.io/technion-histograms/' + course + '/index.min.json';
+        var url = 'https://szaionz.github.io/technion-histograms/' + course + '/index.min.json';
 
         var request = new XMLHttpRequest();
         request.open('GET', url, true);
