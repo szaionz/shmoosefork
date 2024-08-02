@@ -614,7 +614,10 @@ var CourseFeedback = (function () {
                         posts+=data.posts;
                     }
                     if (response.ok){
-                        posts+=response.json().posts;
+                        var json = response.json()
+                        posts+=json.posts;
+                        console.log(json);
+                        console.log(json.posts);
                     }
                     if (posts){
                         console.log(posts);
