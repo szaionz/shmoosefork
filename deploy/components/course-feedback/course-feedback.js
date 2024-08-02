@@ -602,23 +602,27 @@ var CourseFeedback = (function () {
         if (typeof firebase !== 'undefined') {
             Promise.all(
             [firebase.firestore().collection('courseFeedback').doc(course).get(),
-                fetch('legacy-reviews/'+course+'.json')
+                fetch('legacy-reviews/'+course+'.json').then(
+                    function (response){
+                        if (response.ok){
+                            return response.json();
+                        }
+                        else{
+                            return Promise.resolve([]);
+                        }
+                    }
+                )
             ])
                 .then(function (data) {
                     let doc;
-                    let response;
-                    [doc, response]=data;
+                    let legacy;
+                    [doc, legacy]=data;
                     var posts = [];
                     if (doc.exists) {
                         var data = doc.data();
                         posts+=data.posts;
                     }
-                    if (response.ok){
-                        var json = response.json()
-                        posts+=json.posts;
-                        console.log(json);
-                        console.log(json.posts);
-                    }
+                    posts+=legacy.posts;
                     if (posts){
                         console.log(posts);
                         renderFeedback(that, course, posts);
