@@ -617,7 +617,7 @@ var CourseFeedback = (function () {
                         posts+=response.json().posts;
                     }
                     if (posts){
-                        console.log(posts)
+                        console.log(posts);
                         renderFeedback(that, course, posts);
                     }
                     else{
