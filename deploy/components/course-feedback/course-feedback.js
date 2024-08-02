@@ -624,7 +624,6 @@ var CourseFeedback = (function () {
                     }
                     posts=posts.concat(legacy.posts);
                     if (posts){
-                        console.log(typeof posts);
                         renderFeedback(that, course, posts);
                     }
                     else{
