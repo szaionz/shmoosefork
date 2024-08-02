@@ -620,9 +620,9 @@ var CourseFeedback = (function () {
                     var posts = [];
                     if (doc.exists) {
                         var data = doc.data();
-                        posts+=data.posts;
+                        posts=posts.concat(data.posts)
                     }
-                    posts+=legacy.posts;
+                    posts=posts.concat(legacy.posts);
                     if (posts){
                         console.log(typeof posts);
                         renderFeedback(that, course, posts);
