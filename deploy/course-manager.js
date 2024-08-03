@@ -249,8 +249,8 @@ CourseManager.prototype.getDescription = function (course, options) {
 
     if (options.links) {
         var loggingProps = options.logging ? ' onclick="gtag(\'event\', \'info-click-link-rishum\')"' : '';
-        linksHtml += '<br><br><a href="https://students.technion.ac.il/local/technionsearch/course/' + course + '" target="_blank" rel="noopener"' + loggingProps + '>' +
-            '<img src="assets/icon-students.png" alt="icon" width="16" height="16"> פורטל הסטודנטים</a>';
+        // linksHtml += '<br><br><a href="https://students.technion.ac.il/local/technionsearch/course/' + course + '" target="_blank" rel="noopener"' + loggingProps + '>' +
+        //     '<img src="assets/icon-students.png" alt="icon" width="16" height="16"> פורטל הסטודנטים</a>';
 
         if (/^23\d\d\d\d$/.test(course)) {
             // Only for computer science courses.
