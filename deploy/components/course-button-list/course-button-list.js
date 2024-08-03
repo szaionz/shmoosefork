@@ -389,7 +389,7 @@ var CourseButtonList = (function () {
 
         // Put links on course numbers.
         // Replace only text inside element: https://stackoverflow.com/a/11867485
-        let courses_to_name=[];
+        // let courses_to_name=[];
         courseInfo.contents().filter(function () {
             return this.nodeType === Node.TEXT_NODE;
         }).each(function () {
@@ -404,8 +404,9 @@ var CourseButtonList = (function () {
                     tooltipTitle = courseManager.getTitle(match);
                 } 
                 else {
-                    tooltipTitle = '(לא מועבר בסמסטר)';
-                    courses_to_name.push(match);
+                    
+                    if (course_names_mapper[match]) tooltipTitle = (match+ " - "+course_names_mapper[match]);
+                    else tooltipTitle="(לא נמצא שם הקורס)"
                 }
 
                 replaced = true;
@@ -429,21 +430,21 @@ var CourseButtonList = (function () {
             }
         });
         modalBody.find('.course-information').html(courseInfo);
-        courses_to_name.forEach(
-            function (course_num){
-                fetch('course_names/'+course_num+'.txt').then(
-                    function (response){
-                        if (response.ok) return response.text();
-                        else return Promise.resolve("טעינת שם הקורס כשלה");
-                    }
-                ).then(
-                    function (text){
-                        setToolTip(course_num, text);
+        // courses_to_name.forEach(
+        //     function (course_num){
+        //         fetch('course_names/'+course_num+'.txt').then(
+        //             function (response){
+        //                 if (response.ok) return response.text();
+        //                 else return Promise.resolve("טעינת שם הקורס כשלה");
+        //             }
+        //         ).then(
+        //             function (text){
+        //                 setToolTip(course_num, text);
 
-                    }
-                )
-            }
-        );
+        //             }
+        //         )
+        //     }
+        // );
         var courseFeedback = new CourseFeedback(modalBody.find('.course-feedback'), {});
         courseFeedback.loadFeedback(course);
 
