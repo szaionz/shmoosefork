@@ -393,7 +393,7 @@ var CourseButtonList = (function () {
             return this.nodeType === Node.TEXT_NODE;
         }).each(function () {
             var replaced = false;
-            var html = $('<div>').text(this.textContent).html().replace(/\b\d{6}\b/g, function (match) {
+            var html = $('<div>').text(this.textContent).html().replace(/\b\d{8}\b/g, function (match) {
                 if (match === course) {
                     return match;
                 }
