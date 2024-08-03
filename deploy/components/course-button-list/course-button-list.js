@@ -428,7 +428,7 @@ var CourseButtonList = (function () {
                 $(this).replaceWith(newElement);
             }
         });
-
+        console.log(courses_to_name);
         modalBody.find('.course-information').html(courseInfo);
         courses_to_name.forEach(
             function (course_num){
@@ -439,6 +439,7 @@ var CourseButtonList = (function () {
                     }
                 ).then(
                     function (text){
+                        console.log("Setting title for "+course_num+" "+text);
                         $("#"+course_num).attr('title', course_num+" - "+text);
                     }
                 )
