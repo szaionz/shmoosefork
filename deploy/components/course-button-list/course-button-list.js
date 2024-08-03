@@ -389,6 +389,7 @@ var CourseButtonList = (function () {
 
         // Put links on course numbers.
         // Replace only text inside element: https://stackoverflow.com/a/11867485
+        let courses_to_name=[];
         courseInfo.contents().filter(function () {
             return this.nodeType === Node.TEXT_NODE;
         }).each(function () {
@@ -401,8 +402,10 @@ var CourseButtonList = (function () {
                 var tooltipTitle;
                 if (courseManager.doesExist(match)) {
                     tooltipTitle = courseManager.getTitle(match);
-                } else {
+                } 
+                else {
                     tooltipTitle = '(לא מועבר בסמסטר)';
+                    courses_to_name.push(match);
                 }
 
                 replaced = true;
@@ -414,7 +417,8 @@ var CourseButtonList = (function () {
                     title: tooltipTitle,
                     'data-toggle': 'tooltip',
                     'data-trigger': 'hover',
-                    text: match
+                    text: match,
+                    'id': match
                 })[0].outerHTML;
             });
 
@@ -426,7 +430,20 @@ var CourseButtonList = (function () {
         });
 
         modalBody.find('.course-information').html(courseInfo);
-
+        courses_to_name.forEach(
+            function (course_num){
+                fetch('course_names/'+course_num+'.txt').then(
+                    function (response){
+                        if (response.ok) return response.text();
+                        else return Promise.resolve("טעינת שם הקורס כשלה");
+                    }
+                ).then(
+                    function (text){
+                        $("#"+course_num).attr('title', course_num+" - "+text);
+                    }
+                )
+            }
+        )
         var courseFeedback = new CourseFeedback(modalBody.find('.course-feedback'), {});
         courseFeedback.loadFeedback(course);
 
