@@ -428,7 +428,6 @@ var CourseButtonList = (function () {
                 $(this).replaceWith(newElement);
             }
         });
-        console.log(courses_to_name);
         modalBody.find('.course-information').html(courseInfo);
         courses_to_name.forEach(
             function (course_num){
@@ -546,7 +545,6 @@ function setToolTip(course_num, text) {
     console.log("Setting title for " + course_num + " " + text);
     let link = $("#" + course_num);
     if (link.length>0){
-        console.log(link);
         link.attr('title', course_num + " - " + text);
         link.attr('data-original-title', course_num + " - " + text);
     }
