@@ -440,7 +440,11 @@ var CourseButtonList = (function () {
                 ).then(
                     function (text){
                         console.log("Setting title for "+course_num+" "+text);
-                        $("#"+course_num).attr('title', course_num+" - "+text);
+                        let link = $("#"+course_num);
+                        console.log(link);
+                        link.attr('title', course_num+" - "+text);
+                        link.attr('data-original-title', course_num+" - "+text);
+
                     }
                 )
             }
