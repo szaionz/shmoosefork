@@ -430,13 +430,6 @@ var CourseButtonList = (function () {
         });
         console.log(courses_to_name);
         modalBody.find('.course-information').html(courseInfo);
-        
-        var courseFeedback = new CourseFeedback(modalBody.find('.course-feedback'), {});
-        courseFeedback.loadFeedback(course);
-
-        var histogramBrowser = new HistogramBrowser(modalBody.find('.inline-histograms'), {});
-        histogramBrowser.loadHistograms(course);
-
         courses_to_name.forEach(
             function (course_num){
                 fetch('course_names/'+course_num+'.txt').then(
@@ -446,16 +439,17 @@ var CourseButtonList = (function () {
                     }
                 ).then(
                     function (text){
-                        console.log("Setting title for "+course_num+" "+text);
-                        let link = $("#"+course_num);
-                        console.log(link);
-                        link.attr('title', course_num+" - "+text);
-                        link.attr('data-original-title', course_num+" - "+text);
+                        setToolTip(course_num, text);
 
                     }
                 )
             }
         );
+        var courseFeedback = new CourseFeedback(modalBody.find('.course-feedback'), {});
+        courseFeedback.loadFeedback(course);
+
+        var histogramBrowser = new HistogramBrowser(modalBody.find('.inline-histograms'), {});
+        histogramBrowser.loadHistograms(course);
     }
 
     CourseButtonList.prototype.setFloatingCourseInfo = function (course) {
@@ -548,3 +542,18 @@ var CourseButtonList = (function () {
 
     return CourseButtonList;
 })();
+function setToolTip(course_num, text) {
+    console.log("Setting title for " + course_num + " " + text);
+    let link = $("#" + course_num);
+    if (link.length>0){
+        console.log(link);
+        link.attr('title', course_num + " - " + text);
+        link.attr('data-original-title', course_num + " - " + text);
+    }
+    else{
+        setTimeout(function() {
+            setToolTip(course_num, text);
+        }, 100);
+    }
+}
+
