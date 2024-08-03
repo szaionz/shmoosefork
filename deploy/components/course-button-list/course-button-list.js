@@ -410,7 +410,7 @@ var CourseButtonList = (function () {
 
                 replaced = true;
                 return $('<a>', {
-                    href: 'https://students.technion.ac.il/local/technionsearch/course/' + match,
+                    //href: 'https://students.technion.ac.il/local/technionsearch/course/' + match,
                     target: '_blank',
                     rel: 'noopener',
                     onclick: 'gtag(\'event\', \'info-click-dependency-link-rishum\')',
