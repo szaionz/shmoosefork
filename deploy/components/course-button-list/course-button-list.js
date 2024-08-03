@@ -430,6 +430,13 @@ var CourseButtonList = (function () {
         });
         console.log(courses_to_name);
         modalBody.find('.course-information').html(courseInfo);
+        
+        var courseFeedback = new CourseFeedback(modalBody.find('.course-feedback'), {});
+        courseFeedback.loadFeedback(course);
+
+        var histogramBrowser = new HistogramBrowser(modalBody.find('.inline-histograms'), {});
+        histogramBrowser.loadHistograms(course);
+
         courses_to_name.forEach(
             function (course_num){
                 fetch('course_names/'+course_num+'.txt').then(
@@ -448,12 +455,7 @@ var CourseButtonList = (function () {
                     }
                 )
             }
-        )
-        var courseFeedback = new CourseFeedback(modalBody.find('.course-feedback'), {});
-        courseFeedback.loadFeedback(course);
-
-        var histogramBrowser = new HistogramBrowser(modalBody.find('.inline-histograms'), {});
-        histogramBrowser.loadHistograms(course);
+        );
     }
 
     CourseButtonList.prototype.setFloatingCourseInfo = function (course) {
