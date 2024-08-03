@@ -236,7 +236,10 @@ var CourseButtonList = (function () {
             ' data-course-number="' + course + '">' +
             '</li>');
         var badge = $('<span class="badge badge-secondary float-right">' +
-            '<span class="course-button-list-badge-text">i</span>' +
+            '<span class="course-button-list-badge-text"><i class="fas fa-info"></i></span>' +
+            '</span>');
+        var copyButton = $('<span class="badge badge-secondary float-right" style="margin-left: 4px;">' +
+            '<span class="course-button-list-badge-text"><i class="far fa-copy"></i></span>' +
             '</span>');
         var color = that.colorGenerator(course);
         button.css('background-color', color)
@@ -253,7 +256,7 @@ var CourseButtonList = (function () {
                 $(this).removeClass('course-button-list-item-hovered');
                 that.onHoverOut(course);
             })
-            .append(spanAbsolute, spanBoldHidden, badge);
+            .append(spanAbsolute, spanBoldHidden, badge, copyButton);
 
         // Add tooltip to badge.
         var courseDescriptionHtml = that.courseManager.getDescription(course, {html: true});
@@ -301,6 +304,20 @@ var CourseButtonList = (function () {
                 }
             });
         });
+        copyButton.hover(
+            function () {
+                $(this).removeClass('badge-secondary');
+                $(this).addClass('badge-primary');
+            }, function () {
+                $(this).removeClass('badge-primary');
+                $(this).addClass('badge-secondary');
+            }
+        ).click(function (e) {
+            e.stopPropagation(); // don't execute parent button onclick
+
+            navigator.clipboard.writeText(course);
+           
+        });
 
         var showFirstTimeTooltip = false;
         if (that.element.find('li.list-group-item:first').length === 0) {
@@ -317,7 +334,9 @@ var CourseButtonList = (function () {
         }
 
         addTooltipToBadge(badge, tooltipHtml, showFirstTimeTooltip);
-
+        copyButton.prop('title', "העתק את מספר הקורס").tooltip({
+            html: true,
+        });
         that.element.append(button);
 
         if (showFirstTimeTooltip) {
