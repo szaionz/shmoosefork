@@ -242,6 +242,8 @@ var CourseButtonList = (function () {
             '<span class="course-button-list-badge-text"><i class="far fa-copy"></i></span>' +
             '</span>');
         var color = that.colorGenerator(course);
+        var littleButtonDiv = $('<div style="display: block;"></div>');
+        littleButtonDiv.append(badge, copyButton);
         button.css('background-color', color)
             .click(function () {
                 if (!that.readonly) {
@@ -256,7 +258,7 @@ var CourseButtonList = (function () {
                 $(this).removeClass('course-button-list-item-hovered');
                 that.onHoverOut(course);
             })
-            .append(spanAbsolute, spanBoldHidden, badge, copyButton);
+            .append(spanAbsolute, spanBoldHidden, littleButtonDiv);
 
         // Add tooltip to badge.
         var courseDescriptionHtml = that.courseManager.getDescription(course, {html: true});
