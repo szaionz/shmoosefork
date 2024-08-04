@@ -939,6 +939,9 @@
             // Disable accountchooser.com which is enabled by default.
             credentialHelper: firebaseui.auth.CredentialHelper.NONE
         };
+        if (typeof firebase !== 'undefined' && firebase.auth().currentUser !== null) {
+            firebase.auth().signOut();
+        }
 
         // Initialize the FirebaseUI Widget using Firebase.
         var firebaseUI = new firebaseui.auth.AuthUI(firebase.auth());
