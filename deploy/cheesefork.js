@@ -227,6 +227,10 @@
         // Signed in users were eating up quota
         if (typeof firebase !== 'undefined' && firebase.auth().currentUser !== null) { //if signed in
             firebase.auth().signOut();//don't
+            console.log("signed out");
+        }
+        else{
+            console.log("not signed out");
         }
     }
 
