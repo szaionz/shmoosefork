@@ -209,6 +209,10 @@
                             showExtraContentOnLoad();
                         });
                     });
+                    // Signed in users were eating up quota
+                    if (typeof firebase !== 'undefined' && firebase.auth().currentUser !== null) { //if signed in
+                        firebase.auth().signOut();//don't
+                    }
                     firebaseAuthUIInitialized = true;
                 } catch (e) {
                     // Firebase UI doesn't work on Edge/IE in private mode.
@@ -939,9 +943,7 @@
             // Disable accountchooser.com which is enabled by default.
             credentialHelper: firebaseui.auth.CredentialHelper.NONE
         };
-        if (typeof firebase !== 'undefined' && firebase.auth().currentUser !== null) {
-            firebase.auth().signOut();
-        }
+        
 
         // Initialize the FirebaseUI Widget using Firebase.
         var firebaseUI = new firebaseui.auth.AuthUI(firebase.auth());
