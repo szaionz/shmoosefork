@@ -203,14 +203,14 @@
             if (typeof firebase !== 'undefined') {
                 try {
                     firebaseInit();
-                    firebaseAuthUIInit(function () {
-                        watchSavedSchedule(function () {
-                            $('#page-loader').hide();
-                            showExtraContentOnLoad();
-                        });
-                    });
+                    // firebaseAuthUIInit(function () {
+                    //     watchSavedSchedule(function () {
+                    //         $('#page-loader').hide();
+                    //         showExtraContentOnLoad();
+                    //     });
+                    // });
                     
-                    firebaseAuthUIInitialized = true;
+                    // firebaseAuthUIInitialized = true;
                 } catch (e) {
                     // Firebase UI doesn't work on Edge/IE in private mode.
                     // Will fall back to offline mode.
