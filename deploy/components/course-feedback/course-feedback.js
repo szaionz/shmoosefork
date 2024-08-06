@@ -608,7 +608,7 @@ var CourseFeedback = (function () {
                             return response.json();
                         }
                         else{
-                            return Promise.resolve([]);
+                            return Promise.resolve({posts:[]});
                         }
                     }
                 )
