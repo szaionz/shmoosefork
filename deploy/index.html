@@ -393,6 +393,10 @@
         var script = document.createElement('script');
         script.src = 'courses/courses_' + currentSemester + '.min.js';
         document.write(script.outerHTML);
+
+        var script_names_prereqs=document.createElement('script');
+        script_names_prereqs.src = 'courses/course_names_prereqs_' + currentSemester + '.min.js';
+        document.write(script_names_prereqs.outerHTML);
     })();
 </script>
 <script src="courses/course_names.min.js"></script>

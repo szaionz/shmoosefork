@@ -427,6 +427,7 @@ var CourseButtonList = (function () {
                 else {
                     
                     if (course_names_mapper[match]) tooltipTitle = (match+ " - "+course_names_mapper[match]);
+                    else if (course_names_from_prereqs[match]) tooltipTitle = (match+ " - "+course_names_from_prereqs[match]);
                     else tooltipTitle="(לא נמצא שם הקורס)"
                 }
 
