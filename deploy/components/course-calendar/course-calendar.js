@@ -245,7 +245,7 @@ var CourseCalendar = (function () {
 
     function getLessonType(courseNumber, lesson) {
         // Sport courses have a non-standard format, treat all of the lessons as the same type.
-        if (/^394[89]\d\d$/.test(courseNumber)) {
+        if (/^03940[89]\d\d$/.test(courseNumber)) {
             return 'sport';
         } else {
             return stringHexEncode(lesson['סוג']);
